@@ -11,16 +11,18 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os
+from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-r3g9v@g1wt$^3@n5i2wt)oohsvw*rtf2otq&s7l(gv=fvqy_^%'
+SECRET_KEY = os.getenv("SECRET_KEY")
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -92,22 +94,7 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#         'default': {
-#             # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#             'ENGINE': 'django.db.backends.mysql',
-#             'OPTIONS': 
-#                 {
-#                     'sql_mode': 'STRICT_TRANS_TABLES',
-#                     # 'sql_mode': 'NO_AUTO_VALUE_ON_ZERO',
-#                 },
-#             'NAME': 'bincom_test2',
-#             'USER': 'root',
-#             'PASSWORD': '',
-#             'HOST': '127.0.0.1',
-#             'PORT': '3306',
-#         }
-#     }
+
 
 CONN_MAX_AGE = 500
 
