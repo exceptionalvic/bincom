@@ -1,0 +1,5 @@
+<option value="">---------</option>
+<option value="" id="loader" style='display: none;'>loading options...</option>
+{% for polling_unit in polling_units %}
+<option value="{{ polling_unit.pk }}">{{ polling_unit.polling_unit_name }}</option>
+{% endfor %}

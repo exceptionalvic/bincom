@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+
+{% block content %}
+<title>{% block title %} Add New Polling Unit Result- Inec 2011 {% endblock title %}</title>
+
+<main>
+  <div class="p-3 pb-md-4 mx-auto text-center">
+    <h2 class="display-4 fw-normal">Add New Polling Unit Result</h2>
+    <!-- <p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p> -->
+  </div>
+  <div class="row">
+        <div class="col-md-8 mb-2 mx-auto" id="ward1">
+          <!-- <form class="" action="." method="POST">
+            {% csrf_token %}
+            <select class="form-select" aria-label="Default select example" name="lga_id" hx-get="/ajax/get-total-pu-by-lga/" hx-push-url="false" hx-include="[name='lga_id']" hx-target="#display-res">
+                <option value="0" >Select LGA</option>
+                {% for item in all_lga %}
+                <option value="{{ item.lga_id }}" style="display: block;">{{ item.lga_name }}</option>
+                {% endfor %}
+            </select>
+            
+        </form> -->
+        <div class="card">
+            <div class="card-body">
+                <form action="." method="POST">
+                    {% csrf_token %}
+                    <fieldset>
+                    <legend>Save Poll Data</legend>
+                    <div class="mb-3">
+                        <label for="disabledSelect" class="form-label">Polling Unit</label>
+                        <select id="disabledSelect" class="form-select" name="polling_unit_uniqueid">
+                            {% for pu in all_pu %}
+                        <option value="{{ pu.uniqueid }}">{{ pu.polling_unit_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="disabledSelect" class="form-label">Select Party</label>
+                        <select id="disabledSelect" class="form-select" name="party_abbreviation">
+                        <option value="PDP">PDP</option>
+                        <option value="DPP">DPP</option>
+                        <option value="CPP">CPP</option>
+                        <option value="ACN">ACN</option>
+                        <option value="JP">JP</option>
+                        <option value="ANPP">ANPP</option>
+                        <option value="PPA">PPA</option>
+                        <option value="CDC">CDC</option>
+                        <option value="LABO">LABO</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="disabledTextInput" class="form-label">Party Score</label>
+                        <input type="number" id="disabledTextInput" class="form-control" name="party_score" placeholder="Input Poll Score">
+                    </div>
+                    <div class="mb-3">
+                        <label for="disabledTextInput" class="form-label">Entered By</label>
+                        <input type="text" id="disabledTextInput" class="form-control" name="entered_by_user" placeholder="Enter Your Full Name">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Poll</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+  
+</main>
+{% endblock %}

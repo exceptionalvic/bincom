@@ -1,0 +1,5 @@
+<option value="">---------</option>
+<option value="" id="loader" style='display: none;'>loading options...</option>
+{% for ward in wards %}
+<option value="{{ ward.pk }}">{{ ward.ward_name }}</option>
+{% endfor %}

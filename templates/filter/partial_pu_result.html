@@ -1,0 +1,88 @@
+<div class="table-responsive" id="tb">
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <!-- <th style="width: 10%;">PU ID</th> -->
+          <th style="width: 10%;">PDP</th>
+          <th style="width: 10%;">DPP</th>
+          <th style="width: 10%;">ACN</th>
+          <th style="width: 10%;">PPA</th>
+          <th style="width: 10%;">CDC</th>
+          <th style="width: 10%;">JP</th>
+          <th style="width: 10%;">CPP</th>
+          <th style="width: 10%;">ANPP</th>
+          <th style="width: 10%;">LABO</th>
+          <!-- <th style="width: 82%;">CPP</th>
+          <th style="width: 82%;">CPP</th>
+          <th style="width: 82%;">CPP</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <!-- <td>{{ item.polling_unit_uniqueid }}</td> -->
+        {% for item in pu_results_context %}
+            <!-- pdp -->
+            {% if item.party_abbreviation == 'PDP' %}
+                
+                <td>{{ item.party_score }}</td>
+                
+            {% endif %}
+            <!-- dpp -->
+            {% if item.party_abbreviation == 'DPP' %}
+              
+              <td>{{ item.party_score }}</td>
+              
+            {% endif %}
+
+            {% if item.party_abbreviation == 'ACN' %}
+              
+              <td>{{ item.party_score }}</td>
+            {% endif %}
+
+            {% if item.party_abbreviation == 'PPA' %}
+              
+              <td>{{ item.party_score }}</td>
+            {% endif %}
+
+            {% if item.party_abbreviation == 'CDC' %}
+              
+              <td>{{ item.party_score }}</td>
+            {% endif %}
+
+            {% if item.party_abbreviation == 'JP' %}
+              
+              <td>{{ item.party_score }}</td>
+            {% endif %}
+
+            {% if item.party_abbreviation == 'CPP' %}
+              
+              <td>{{ item.party_score }}</td>
+            {% endif %}
+
+            {% if item.party_abbreviation == 'ANPP' %}
+              
+              <td>{{ item.party_score }}</td>
+            {% endif %}
+
+            {% if item.party_abbreviation == 'LABO' %}
+              
+              <td>{{ item.party_score }}</td>
+            {% endif %}
+        
+          {% empty %}
+          <td>no data</td>
+          <td>no data</td>
+          <td>no data</td>
+          <td>no data</td>
+          <td>no data</td>
+          <td>no data</td>
+          <td>no data</td>
+          <td>no data</td>
+          <td>no data</td>
+        
+        {% endfor %}
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>

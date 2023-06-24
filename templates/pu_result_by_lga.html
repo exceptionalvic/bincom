@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+
+{% block content %}
+<title>{% block title %} Total Polling Unite Results By LGA - Inec 2011 {% endblock title %}</title>
+
+<main>
+  <div class="p-3 pb-md-4 mx-auto text-center">
+    <h2 class="display-4 fw-normal">Total Polling Unit Results By LGA</h2>
+    <!-- <p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p> -->
+  </div>
+  <div class="row">
+        <div class="col-md-8 mb-2 mx-auto" id="ward1">
+          <p class="text-center">LGA</p>
+          <select class="form-select" aria-label="Default select example" name="lga_id" hx-get="/ajax/get-total-pu-by-lga/" hx-push-url="false" hx-include="[name='lga_id']" hx-target="#display-res">
+            <option value="0" >Select LGA</option>
+            {% for item in all_lga %}
+            <option value="{{ item.lga_id }}" style="display: block;">{{ item.lga_name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+</div>
+
+<br>
+  <h3 class="display-6 text-center mb-4">Results</h3>
+  <section id="display-res">
+    <div class="card mx-auto mb-2 mt-2">
+        <div class="card-body text-center">
+            {% if sum_pu_result %}
+            Total in all Polling Units for this LGA: <b>{{ sum_pu_result }}</b>
+            {% else %}
+            <p class="text-center">Select an LGA above to view results</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="table-responsive" id="tb">
+        <table class="table text-center">
+        <thead>
+            <tr>
+            <th style="width: 10%;">PDP</th>
+            <th style="width: 10%;">DPP</th>
+            <th style="width: 10%;">ACN</th>
+            <th style="width: 10%;">PPA</th>
+            <th style="width: 10%;">CDC</th>
+            <th style="width: 10%;">JP</th>
+            <th style="width: 10%;">CPP</th>
+            <th style="width: 10%;">ANPP</th>
+            <th style="width: 10%;">LABO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ PDP }}</td>
+                <td>{{ DPP }}</td>
+                <td>{{ ACN }}</td>
+                <td>{{ PPA }}</td>
+                <td>{{ CDC }}</td>
+                <td>{{ JP }}</td>
+                <td>{{ CPP }}</td>
+                <td>{{ ANPP }}</td>
+                <td>{{ LABO }}</td>
+            </tr>
+            
+        </tbody>
+        </table>
+    </div>
+</section>
+</main>
+{% endblock %}

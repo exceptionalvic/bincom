@@ -1,0 +1,16 @@
+<div class="col-md-4" id="ward1" style="min-width:300px;">
+    <select class="form-select" aria-label="Default select example" name="ward" hx-get="/ajax/get-pus/" hx-push-url="true" hx-include="[name='ward']" hx-target="#pu">
+      <option value="0" >Select Ward</option>
+      {% for item in ward_context %}
+      <option value="{{ item.uniqueid }}" style="display: block;">{{ item.ward_name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-md-4" id="pu" style="min-width:300px;">
+    <select class="form-select" aria-label="Default select example">
+      <option value="0" >Select Polling Unit</option>
+      {% for item in pu_context %}
+      <option value="{{ item.id }}">{{ item.polling_unit_name }}</option>
+      {% endfor %}
+    </select>
+  </div>

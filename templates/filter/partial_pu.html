@@ -1,0 +1,9 @@
+<div class="col-md-4" id="pu" style="min-width:300px;">
+  <p class="text-center">Poling Unit</p>
+  <select class="form-select" aria-label="Default select example" name="pu" hx-get="/ajax/get-pus/result/" hx-push-url="false" hx-include="[name='pu']" hx-target="#tb">
+    <option value="0" >Select Polling Unit</option>
+    {% for item in pu_context %}
+    <option value="{{ item.uniqueid }}">{{ item.polling_unit_name }} - {{ item.uniqueid }}</option>
+    {% endfor %}
+  </select>
+</div>
